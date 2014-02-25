@@ -3,6 +3,7 @@
 
 #include "timepro.h"
 #include <string>
+#include <stdio.h>
 
 #ifndef USE_TIMEPRO
 
