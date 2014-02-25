@@ -3,23 +3,34 @@
 
 #include "timepro.h"
 #include <string>
-using std::string;
+
+#ifndef USE_TIMEPRO
+
+#define TPTimer std::string
+#define TPMemTimer std::string
+
+class TPPrintTimer {
+    public:
+        TPPrintTimer(std::string name, FILE *f = stdout) {}
+};
+
+#else // USE_TIMEPRO
 
 /* A scoped timer for C++ */
 class TPTimer {
     private:
-        string _name;
+        std::string _name;
     public:
-        TPTimer(string name);
+        TPTimer(std::string name);
         ~TPTimer();
 };
 
 /* A scoped timer for C++ which also records memory usage */
 class TPMemTimer {
     private:
-        string _name;
+        std::string _name;
     public:
-        TPMemTimer(string name);
+        TPMemTimer(std::string name);
         ~TPMemTimer();
 };
 
@@ -30,9 +41,11 @@ class TPMemTimer {
 class TPPrintTimer {
     private:
         FILE *f_;
-        string name_;
+        std::string name_;
     public:
-        TPPrintTimer(string name, FILE *f = stdout);
+        TPPrintTimer(std::string name, FILE *f = stdout);
         ~TPPrintTimer();
 };
+#endif // USE_TIMEPRO
+
 #endif // TIMEPRO_HPP

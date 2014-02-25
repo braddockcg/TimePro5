@@ -1,0 +1,5 @@
+*.o
+*.a
+test_cplusplus
+test_timepro
+test_instrument

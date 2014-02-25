@@ -1,4 +1,5 @@
-CFLAGS=-g -std=gnu99 -Wall -I.
+CFLAGS=-g -std=gnu99 -Wall -I. -DUSE_TIMEPRO
+CXXFLAGS=-g -Wall -I. -DUSE_TIMEPRO
 LDFLAGS=-g -lpthread -lrt -ldl -lstdc++ -Wl,--export-dynamic
 
 all: test_timepro test_instrument test_cplusplus
@@ -13,7 +14,7 @@ test_instrument: test_instrument.c libtimepro.a
 	$(CC) $(CFLAGS) -finstrument-functions -o $@ -L. test_instrument.c -ltimepro $(LDFLAGS)
 
 test_cplusplus: test_cplusplus.cc timepro.hpp
-	g++ $(CFLAGS) -finstrument-functions -o $@ -L. test_cplusplus.cc -ltimepro $(LDFLAGS)
+	g++ $(CXXFLAGS) -finstrument-functions -o $@ -L. test_cplusplus.cc -ltimepro $(LDFLAGS)
 
 test_timepro.o: test_timepro.c
 

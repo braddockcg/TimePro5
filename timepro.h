@@ -6,6 +6,20 @@
 extern "C" {
 #endif
 
+#ifndef USE_TIMEPRO
+
+#define TPInit()
+#define TPStart(name)
+#define TPEnd(name)
+#define TPStartMem(name)
+#define TPEndMem(name)
+#define TPPrint(f)
+#define TPPrunedPrint(f, min_usec)
+#define TPClear()
+#define TPPrintBacktrace()
+
+#else // USE_TIMEPRO
+
 #include <stdio.h>
 
 /* TPInit() must be called once per process before any other Timepro calls
@@ -39,6 +53,8 @@ void TPPrunedPrint(FILE *f, long min_usec);
 void TPClear();
 
 void TPPrintBacktrace();
+
+#endif // USE_TIMEPRO
 
 #ifdef __cplusplus
 } // extern "C"
