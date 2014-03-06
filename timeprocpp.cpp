@@ -1,6 +1,6 @@
 #include "timepro.hpp"
 
-TPTimer::TPTimer(string name) 
+TPTimer::TPTimer(std::string name) 
 {
     _name = name;
     TPStart(name.c_str());
@@ -10,7 +10,7 @@ TPTimer::~TPTimer() {
     TPEnd(_name.c_str());
 }
 
-TPMemTimer::TPMemTimer(string name) 
+TPMemTimer::TPMemTimer(std::string name) 
 {
     _name = name;
     TPStartMem(name.c_str());
@@ -20,7 +20,7 @@ TPMemTimer::~TPMemTimer() {
     TPEndMem(_name.c_str());
 }
 
-TPPrintTimer::TPPrintTimer(string name, FILE *f) {
+TPPrintTimer::TPPrintTimer(std::string name, FILE *f) {
     f_ = f;
     name_ = name;
     TPStartMem(name_.c_str());
